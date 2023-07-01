@@ -1,0 +1,15 @@
+name: Build Test
+run-name: Push workflow
+on: [push]
+jobs:
+    build:
+         runs-on: ubuntu-latest
+         steps:
+             - uses: actions/checkout@v3
+             name: Check out repository code
+             - uses: actions/setup-java@v3
+             name: Setup actions/setup-java
+             with:
+                 distribution: 'temurin'
+                 java-version: 17
+             run: ./mvnw clean test compile install
